@@ -12,17 +12,19 @@ class Bookmark
       rs = con.exec "SELECT * FROM name"
 
       rs.map do |row|
-        {:title => row['title'], :url => row['url'] }
+        bookmarks = {:title => row['title'], :url => row['url'] }
+        # bookmarks.map do |bookmark|
+
       end
 
-    rescue PG::Error => e
-
-      puts e.message
-
-      ensure
-
-      rs.clear if rs
-      con.close if con
+    # rescue PG::Error => e
+    #
+    #   puts e.message
+    #
+    #   ensure
+    #
+    #   rs.clear if rs
+    #   con.close if con
     end
   end
 
@@ -36,14 +38,28 @@ class Bookmark
 
       rs = con.exec("INSERT INTO name (title, url) VALUES('#{title}', '#{url}') RETURNING id, title, url")
 
-    rescue PG::Error => e
+    # rescue PG::Error => e
+    #
+    #   puts e.message
+    #
+    #   ensure
+    #
+    #   rs.clear if rs
+    #   con.close if con
+    end
+  end
 
-      puts e.message
+  def self.delete_bookmark(title)
+    begin
+      if ENV['RACK_ENV'] == 'test'
+        con = PG.connect(dbname: 'personal_test_manager')
+      else
+        con = PG.connect(dbname: 'bookmark_manager2')
+      end
 
-      ensure
+      result = con.exec("DELETE FROM name WHERE title = '#{title}'")
 
-      rs.clear if rs
-      con.close if con
+
     end
   end
 end

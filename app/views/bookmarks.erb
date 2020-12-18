@@ -1,1 +1,24 @@
-<%= Bookmark.all %>
+<link rel="stylesheet" href="bookmarks.css">
+
+<ul>
+  <% @bookmarks.each do |bookmark| %>
+    <li>
+      <a href="<%= bookmark[:url] %>">
+        <%= bookmark[:title] %>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+
+<form action="/delete_bookmark" method="post"><center>
+  <label>Delete Bookmark
+    <input type="text" name="title"><center>
+    <input type="submit" name="Delete bookmark">
+  </label>
+<center></form>
+
+<!-- <form action="/name" method="post"><center>
+  <input type="text" name="player_name"><center>
+  <input type="submit" value="Submit">
+<center></form> -->

@@ -6,8 +6,8 @@ feature 'Viewing bookmarks' do
   scenario 'A user can see bookmarks' do
     visit('/bookmarks')
 
-    expect(page).to have_content({:title => 'Makers Academy', :url => "http://www.makersacademy.com"})
-    expect(page).to have_content({:title => 'Destroy all software', :url => "http://www.destroyallsoftware.com"})
-    expect(page).to have_content({:title => 'Google', :url => "http://www.google.com"})
+    expect(page).to have_content('Makers Academy')
+    expect(page).to have_content('Destroy all software')
+    expect(page).to have_content('Google')
   end
 end

@@ -24,4 +24,12 @@ describe Bookmark do
       expect(bookmark[:url]).to eq('hello.com')
     end
   end
+
+  describe('#delete_bookmark') do
+    it 'deletes an existing bookmark' do
+      Bookmark.delete_bookmark('Makers Academy')
+      bookmark = Bookmark.all
+      expect(bookmark.length).to eq(2)
+    end
+  end
 end
