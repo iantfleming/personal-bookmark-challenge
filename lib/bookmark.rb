@@ -13,7 +13,6 @@ class Bookmark
 
       rs.map do |row|
         {:title => row['title'], :url => row['url'] }
-        # p row.is_a?
       end
 
     rescue PG::Error => e

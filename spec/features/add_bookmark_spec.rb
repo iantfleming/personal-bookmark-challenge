@@ -9,6 +9,8 @@ feature 'Add a new bookmark' do
     fill_in('url', with: "hello.com")
     click_button('Enter bookmark')
     click_link("Please click to view bookmarks!")
-    expect(page).to have_content("hello",  "hello.com")
+    p page
+    expect(page).to have_text "hello"
+    expect(page).to have_text "hello.com"
   end
 end
