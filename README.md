@@ -13,7 +13,7 @@ As a user So that I can update my list of bookmarks I would like to add new book
 
 # Domain Model
 
-![Domain Model](https://imgur.com/45u0myO)
+![Domain Model](https://imgur.com/45u0myO.png)
 
 
 # Connect to psql
